@@ -1,0 +1,37 @@
+###
+POST http://localhost:8080/member/create
+Content-Type: application/json
+
+{
+  "name" : "sejong",
+  "email" :"Test@name.com",
+  "password" : "12345"
+}
+
+###
+POST http://localhost:8080/doLogin
+Content-Type: application/json
+
+{
+  "email" :"Test@name.com",
+  "password" : "12345"
+}
+
+
+###
+GET http://localhost:8080/members
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJUZXN0QG5hbWUuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3MDY3NzU1NzUsImV4cCI6MTcwNjc3NzM3NX0.kn_1ZRRaLvp86RTlfFMdllZfFt3AlMwp3aiVRwhIxTM
+
+
+###
+GET http://localhost:8080/members
+
+
+###
+GET http://localhost:8080/members
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJUZXN0QG5hbWUuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3MDY3NzU1NzUsImV4cCI6MTcwNjc3NzM3NX0.kn_1ZRRaLvp86RTlfFMdllZfFt3AlMwp3aiVRwhIxTM
+
+
+###
+GET http://localhost:8080/member/myInfo
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJUZXN0QG5hbWUuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3MDY3NzU1NzUsImV4cCI6MTcwNjc3NzM3NX0.kn_1ZRRaLvp86RTlfFMdllZfFt3AlMwp3aiVRwhIxTM

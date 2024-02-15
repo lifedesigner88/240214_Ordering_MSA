@@ -21,6 +21,14 @@ spring:
           # uri: http:localhost:8081로 선언하면 로드밸런싱이 아니라 8081로 직접 연결
           uri: lb://item-service
 
+        - id: member-service
+          predicates:
+            - Path=/member-service/**
+          filters:
+            - StripPrefix=1
+          uri: lb://member-service
+
+
 eureka:
   client:
     serviceUrl:
@@ -29,3 +37,6 @@ eureka:
     preferIpAddress: true
     hostname: localhost
 
+jwt:
+  expiration: 300 #300분
+  secretKey: sejong
