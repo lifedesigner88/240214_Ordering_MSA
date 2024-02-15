@@ -1,8 +1,9 @@
 package com.example.ordering.ordering.domain;
 
-import com.example.ordering.member.domain.Member;
-import com.example.ordering.orderItem.domain.OrderItem;
-import lombok.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -26,17 +27,16 @@ public class Ordering {
 
 
 //    Relation
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
-    private Member member;
+    private Long memberId;
 
     @ToString.Exclude
     @OneToMany(mappedBy = "ordering", cascade = CascadeType.PERSIST)
-    private final List<OrderItem> orderItems = new ArrayList<>();
+    private final List<OrderStatus.OrderItem> orderItems = new ArrayList<>();
 
 
 //    Funtcion
-    public Ordering(Member member) {this.member = member;}
+    public Ordering(Long memberId) {this.memberId = memberId;}
     public void cancleOrder(){this.orderStatus = OrderStatus.CANCELED;}
 
 

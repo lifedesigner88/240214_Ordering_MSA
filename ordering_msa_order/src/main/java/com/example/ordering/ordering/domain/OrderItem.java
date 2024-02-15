@@ -1,8 +1,9 @@
-package com.example.ordering.orderItem.domain;
+package com.example.ordering.ordering.domain;
 
-import com.example.ordering.item.domain.Item;
-import com.example.ordering.ordering.domain.Ordering;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -21,9 +22,8 @@ public class OrderItem {
     @JoinColumn(nullable = false)
     private Ordering ordering;
 
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
-    private Item item;
+    private Long itemId;
 
     private int quantity;
 

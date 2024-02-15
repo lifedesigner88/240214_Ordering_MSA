@@ -1,12 +1,7 @@
-
-
-
+server:
+  port: 0
 
 spring:
-  security:
-    user:
-      name: root
-      password: 1234
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://localhost:3306/ordering
@@ -18,12 +13,13 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: update
-#    show-sql: true
-
-jwt:
-  expiration: 300 #300분
-  secretKey: sejong
-
-
-
-
+    show-sql: true
+  application:
+    name: order-service
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    preferIpAddress: true
+    hostname: localhost
