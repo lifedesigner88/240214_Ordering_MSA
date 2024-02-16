@@ -57,10 +57,14 @@ public class MemberService {
         return member;
     }
 
-    public MemberResponseDto findMyInfo(String email){
+    public MemberResponseDto findMyInfoByEmail(String email){
         Member member = memberRepo.findByEmail(email).orElseThrow(EntityNotFoundException::new);
         return MemberResponseDto.toMemberResponseDto(member);
     }
 
-
+    public MemberResponseDto findById(Long id) {
+        return memberRepo.findById(id)
+                .map(MemberResponseDto::toMemberResponseDto)
+                .orElseThrow(EntityNotFoundException::new);
+    }
 }

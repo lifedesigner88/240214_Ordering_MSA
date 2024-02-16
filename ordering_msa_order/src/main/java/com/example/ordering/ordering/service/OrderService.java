@@ -1,13 +1,17 @@
 package com.example.ordering.ordering.service;
 
+import com.example.ordering.ordering.domain.OrderStatus;
 import com.example.ordering.ordering.domain.Ordering;
+import com.example.ordering.ordering.dto.MemberDto;
 import com.example.ordering.ordering.dto.OrderReqDto;
 import com.example.ordering.ordering.dto.OrderResDto;
 import com.example.ordering.ordering.repository.OrderRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,37 +21,47 @@ import java.util.stream.Collectors;
 @Slf4j
 public class OrderService {
 
+    private final String MEMBER_API = "http://member-service/";
+    private final String ITEM_API = "http://item-service/";
     public final OrderRepository orderRepo;
+    private final RestTemplate restTemplate;
+
     @Autowired
-    public OrderService(OrderRepository orderRepo) {
+    public OrderService(OrderRepository orderRepo, RestTemplate restTemplate) {
         this.orderRepo = orderRepo;
+        this.restTemplate = restTemplate;
     }
 
-    public Ordering createOrder(List<OrderReqDto> dots){
-//
-//
-//
-//        Member member = memberRepo.findByEmail(email)
-//                .orElseThrow(()-> new EntityNotFoundException("not Found email"));
-//
-//        Ordering ordering = new Ordering(member);
-//
-//        for(OrderReqDto dto : dots){
-//            Item item = itemRepo.findById(dto.getItemId())
-//                    .orElseThrow(() -> new EntityNotFoundException("Item not found"));
-//            OrderStatus.OrderItem orderItem = OrderStatus.OrderItem.builder()
-//                    .item(item)
-//                    .ordering(ordering)
-//                    .quantity(dto.getQuantity())
-//                    .build();
-//
-//            ordering.getOrderItems().add(orderItem);
-//            int banlance = item.getStockQuantity() - dto.getQuantity();
-//
-//            if(banlance < 0) throw new IllegalArgumentException("재고 부족 합니다");
-//            orderItem.getItem().updateStockQuantity(banlance);
-//        }
-//        return orderRepo.save(ordering);
+    public Ordering createOrder(List<OrderReqDto> dots, String email){
+        String url = MEMBER_API + "member/findByEmail?" + email;
+        MemberDto members = restTemplate.getForObject(url, MemberDto.class);
+        Ordering ordering = new Ordering(members.getId());
+
+        orderRepo.save(ordering);
+
+        for(OrderReqDto dto : dots){
+
+            String url = MEMBER_API + "item/" + dot.;
+            MemberDto members = restTemplate.getForObject(url, MemberDto.class);
+
+            Item item = itemRepo.findById(dto.getItemId())
+                    .orElseThrow(() -> new EntityNotFoundException("Item not found"));
+            OrderStatus.OrderItem orderItem = OrderStatus.OrderItem.builder()
+                    .item(item)
+                    .ordering(ordering)
+                    .quantity(dto.getQuantity())
+                    .build();
+
+            ordering.getOrderItems().add(orderItem);
+            int banlance = item.getStockQuantity() - dto.getQuantity();
+
+            if(banlance < 0) throw new IllegalArgumentException("재고 부족 합니다");
+            orderItem.getItem().updateStockQuantity(banlance);
+        }
+        return orderRepo.save(ordering);
+
+
+
         return null;
     }
     public Ordering cancelOrder(Long id) {

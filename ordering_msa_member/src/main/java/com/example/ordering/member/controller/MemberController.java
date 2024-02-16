@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.ws.rs.QueryParam;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,9 +64,23 @@ public class MemberController {
 //        return orderService.findMyOrders();
 //    }
 //
+
+
+    @GetMapping("/member/{id}")
+    public MemberResponseDto findById (@PathVariable Long id){
+        return service.findById(id);
+    }
+
+
+    @GetMapping("/member/findByEmail")
+    public MemberResponseDto findByMemberByEmail (@RequestParam String email){
+        return service.findMyInfoByEmail(email);
+    }
+
+
     @GetMapping("/member/myInfo")
-    public MemberResponseDto findMyInfo(@RequestHeader("myEmail") String email){
-        return service.findMyInfo(email);
+    public MemberResponseDto findMyInfoByEmail(@RequestHeader("myEmail") String email){
+        return service.findMyInfoByEmail(email);
     }
 
 

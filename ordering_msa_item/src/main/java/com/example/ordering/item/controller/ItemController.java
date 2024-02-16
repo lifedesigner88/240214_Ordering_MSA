@@ -2,6 +2,8 @@ package com.example.ordering.item.controller;
 
 
 import com.example.ordering.common.CommonResponse;
+import com.example.ordering.item.domain.Item;
+import com.example.ordering.item.dto.ItemQuantityUpdateDto;
 import com.example.ordering.item.dto.ItemReqDto;
 import com.example.ordering.item.dto.ItemResDto;
 import com.example.ordering.item.dto.ItemSearchDto;
@@ -65,6 +67,41 @@ public class ItemController {
                                 HttpStatus.OK,
                                 "Item Successfully Created",
                                 service.updateItem(id, itemReqDto)
+                        )
+                );
+
+    }
+
+
+    @PatchMapping("/item/updateQuantity")
+    public ResponseEntity<CommonResponse> findById (Long id){
+        ItemResDto item = service.findById(id);
+
+        return ResponseEntity.ok()
+                .body(
+                        new CommonResponse(
+                                HttpStatus.OK,
+                                "Item Successfully Created",
+                                item
+                        )
+                );
+
+    }
+
+
+
+
+
+    @PatchMapping("/item/updateQuantity")
+    public ResponseEntity<CommonResponse> itemUpdateQuantitiy (ItemQuantityUpdateDto dto){
+        Item item = service.updateQuantitiy(dto);
+
+        return ResponseEntity.ok()
+                .body(
+                        new CommonResponse(
+                                HttpStatus.OK,
+                                "Item Successfully Created",
+                                item
                         )
                 );
 

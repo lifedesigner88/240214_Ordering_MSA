@@ -1,6 +1,7 @@
 package com.example.ordering.item.service;
 
 import com.example.ordering.item.domain.Item;
+import com.example.ordering.item.dto.ItemQuantityUpdateDto;
 import com.example.ordering.item.dto.ItemReqDto;
 import com.example.ordering.item.dto.ItemResDto;
 import com.example.ordering.item.dto.ItemSearchDto;
@@ -133,5 +134,18 @@ public class ItemService {
         } catch (IOException e) {
             throw new IllegalArgumentException("image not available");
         }
+    }
+
+
+    public ItemResDto findById(Long id) {
+    Item item = itemRepo.findById(id).orElseThrow(EntityNotFoundException::new);
+        return new ItemResDto(item);
+    }
+
+
+    public Item updateQuantitiy(ItemQuantityUpdateDto dto) {
+        Item item = itemRepo.findById(dto.getId()).orElseThrow(EntityNotFoundException::new);
+        item.updateStockQuantity(dto.getStockQuantity());
+        return item;
     }
 }
