@@ -18,17 +18,15 @@ import java.util.List;
 public class OrderController {
 
     private final OrderService service;
+
     public OrderController(@Autowired OrderService service) {
         this.service = service;
     }
 
-//    Create
+    //    Create
     @PostMapping("/order/create")
-    public ResponseEntity<CommonResponse> createOrder(
-            @RequestBody List<OrderReqDto> dtos,
-            @RequestHeader("myEmail") String email) {
-        Ordering ordering = service.createOrder(dtos,email);
-
+    public ResponseEntity<CommonResponse> createOrder(@RequestBody List<OrderReqDto> dtos, @RequestHeader("myEmail") String email) {
+        Ordering ordering = service.createOrder(dtos, email);
         return new ResponseEntity<>(
                 new CommonResponse(
                         HttpStatus.CREATED,
@@ -39,13 +37,13 @@ public class OrderController {
         );
     }
 
-//    Read
+    //    Read
     @GetMapping("/orders")
-    public List<OrderResDto> orderList(){
+    public List<OrderResDto> orderList() {
         return service.orderList();
     }
 
-//    Cancel
+    //    Cancel
     @DeleteMapping("/order/{id}/cancel")
     public ResponseEntity<CommonResponse> cancelOrder(@PathVariable Long id) {
         Ordering ordering = service.cancelOrder(id);

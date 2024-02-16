@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/240214_Ordering_MSA.iml" filepath="$PROJECT_DIR$/.idea/240214_Ordering_MSA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.encore.ordering_msa_eureka.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.encore.ordering_msa_eureka.main.iml" />
     </modules>
   </component>
 </project>

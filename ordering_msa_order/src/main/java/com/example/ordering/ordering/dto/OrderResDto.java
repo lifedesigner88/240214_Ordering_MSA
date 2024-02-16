@@ -1,5 +1,6 @@
 package com.example.ordering.ordering.dto;
 
+import com.example.ordering.ordering.domain.OrderItem;
 import com.example.ordering.ordering.domain.OrderStatus;
 import com.example.ordering.ordering.domain.Ordering;
 import lombok.Data;
@@ -30,7 +31,7 @@ public class OrderResDto {
 
         List<OrderResItemDto> orderItems = new ArrayList<>();
 
-        for (OrderStatus.OrderItem orderItem : ordering.getOrderItems()) {
+        for (OrderItem orderItem : ordering.getOrderItems()) {
             OrderResItemDto orderResItemDto = new OrderResItemDto();
             orderResItemDto.setItemId(orderItem.getId());
 //            orderResItemDto.setItemName(orderItem.getItem().getName());

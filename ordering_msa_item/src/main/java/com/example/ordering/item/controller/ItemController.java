@@ -1,6 +1,5 @@
 package com.example.ordering.item.controller;
 
-
 import com.example.ordering.common.CommonResponse;
 import com.example.ordering.item.domain.Item;
 import com.example.ordering.item.dto.ItemQuantityUpdateDto;
@@ -60,7 +59,6 @@ public class ItemController {
     @PostMapping("/item/{id}/update")
     public ResponseEntity<CommonResponse> itemUpdate(@PathVariable Long id,
                                                      ItemReqDto itemReqDto){
-
         return ResponseEntity.ok()
                 .body(
                         new CommonResponse(
@@ -69,39 +67,31 @@ public class ItemController {
                                 service.updateItem(id, itemReqDto)
                         )
                 );
-
     }
 
-
-    @PatchMapping("/item/updateQuantity")
-    public ResponseEntity<CommonResponse> findById (Long id){
+    @GetMapping("/item/{id}")
+    public ResponseEntity<CommonResponse> findById (@PathVariable Long id){
         ItemResDto item = service.findById(id);
-
         return ResponseEntity.ok()
                 .body(
                         new CommonResponse(
                                 HttpStatus.OK,
-                                "Item Successfully Created",
+                                "Item Quantity Successfully Update",
                                 item
                         )
                 );
-
     }
 
 
-
-
-
-    @PatchMapping("/item/updateQuantity")
-    public ResponseEntity<CommonResponse> itemUpdateQuantitiy (ItemQuantityUpdateDto dto){
-        Item item = service.updateQuantitiy(dto);
-
+    @PostMapping("/item/updateQuantity")
+    public ResponseEntity<CommonResponse> itemUpdateQuantitiy (@RequestBody List<ItemQuantityUpdateDto> dto){
+        service.updateQuantitiy(dto);
         return ResponseEntity.ok()
                 .body(
                         new CommonResponse(
                                 HttpStatus.OK,
                                 "Item Successfully Created",
-                                item
+                                null
                         )
                 );
 

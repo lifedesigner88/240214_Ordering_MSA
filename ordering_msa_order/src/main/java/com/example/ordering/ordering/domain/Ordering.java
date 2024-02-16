@@ -29,7 +29,7 @@ public class Ordering {
 
     @ToString.Exclude
     @OneToMany(mappedBy = "ordering", cascade = CascadeType.PERSIST)
-    private final List<OrderStatus.OrderItem> orderItems = new ArrayList<>();
+    private final List<OrderItem> orderItems = new ArrayList<>();
 
 
 //    Funtcion

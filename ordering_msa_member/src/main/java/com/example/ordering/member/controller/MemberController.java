@@ -8,6 +8,8 @@ import com.example.ordering.member.dto.MemberResponseDto;
 import com.example.ordering.member.service.MemberService;
 import com.example.ordering.security.TokenProviderJwt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -73,7 +75,7 @@ public class MemberController {
 
 
     @GetMapping("/member/findByEmail")
-    public MemberResponseDto findByMemberByEmail (@RequestParam String email){
+    public MemberResponseDto findByMemberByEmail (@RequestParam String email) {
         return service.findMyInfoByEmail(email);
     }
 
@@ -110,3 +112,18 @@ public class MemberController {
         );
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -143,9 +143,10 @@ public class ItemService {
     }
 
 
-    public Item updateQuantitiy(ItemQuantityUpdateDto dto) {
-        Item item = itemRepo.findById(dto.getId()).orElseThrow(EntityNotFoundException::new);
-        item.updateStockQuantity(dto.getStockQuantity());
-        return item;
+    public void updateQuantitiy(List<ItemQuantityUpdateDto> dtos) {
+        for(ItemQuantityUpdateDto dto : dtos){
+            Item item = itemRepo.findById(dto.getId()).orElseThrow(EntityNotFoundException::new);
+            item.updateStockQuantity(dto.getStockQuantity());
+        }
     }
 }
