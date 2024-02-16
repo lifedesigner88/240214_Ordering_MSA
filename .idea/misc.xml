@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/ordering_msa_config" />
     <file type="web" url="file://$PROJECT_DIR$/ordering_msa_eureka" />
+    <file type="web" url="file://$PROJECT_DIR$/ordering_msa_gateway" />
+    <file type="web" url="file://$PROJECT_DIR$/ordering_msa_item" />
+    <file type="web" url="file://$PROJECT_DIR$/ordering_msa_item2" />
+    <file type="web" url="file://$PROJECT_DIR$/ordering_msa_member" />
+    <file type="web" url="file://$PROJECT_DIR$/ordering_msa_order" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbrsdk-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

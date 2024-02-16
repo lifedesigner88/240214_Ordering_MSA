@@ -3,7 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/240214_Ordering_MSA.iml" filepath="$PROJECT_DIR$/.idea/240214_Ordering_MSA.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.encore.ordering_msa_eureka.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.encore.ordering_msa_eureka.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Ordering.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Ordering.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/config.main.iml" filepath="$PROJECT_DIR$/.idea/modules/config.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/eureca.main.iml" filepath="$PROJECT_DIR$/.idea/modules/eureca.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gateway.main.iml" filepath="$PROJECT_DIR$/.idea/modules/gateway.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/item.main.iml" filepath="$PROJECT_DIR$/.idea/modules/item.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/item2.main.iml" filepath="$PROJECT_DIR$/.idea/modules/item2.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/member.main.iml" filepath="$PROJECT_DIR$/.idea/modules/member.main.iml" />
     </modules>
   </component>
 </project>
